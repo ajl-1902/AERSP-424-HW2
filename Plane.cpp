@@ -64,6 +64,7 @@ double Plane::distance_to_SCE()
 		return distance - pos;
 }
 
+double Plane::time_on_ground() { return 0; }
 string Plane::plane_type() { return "GA"; }
 
 double Plane::draw_from_normal_dist(double mean, double standard_deviation)

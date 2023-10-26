@@ -14,6 +14,7 @@ private:
 	bool at_SCE;
 	string origin, destination;
 	map<pair<string, string>, int> flight_info;
+	//map<string, int> flight_info;
 	//vector < tuple<string, string, int>> vec;
 
 public:

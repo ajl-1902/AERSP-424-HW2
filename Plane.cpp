@@ -10,6 +10,9 @@ map<pair<string, string>, int> flight_info{
 	{ make_pair("SCE", "ORD"),640 },
 	{ make_pair("SCE", "EWR"),220 } };
 
+//map<string, int> flight_info{
+//	{"PHL",160},{"ORD",640},{"EWR",220} };
+
 //vector<tuple<string, string, int>> vec{
 //	make_tuple("SCE", "PHL", 160),
 //	make_tuple("SCE", "ORD", 640),
@@ -37,9 +40,21 @@ Plane::Plane(string from, string to)
 	origin = from;
 	destination = to;
 
-	if (from == "SCE")
-		distance = flight_info[make_pair(from, to)];
-	else distance = flight_info[make_pair(to, from)];
+	if (origin == "SCE")
+	{
+		//distance = flight_info[make_pair(origin, destination)];
+		auto it = flight_info.find(make_pair(origin, destination));
+		if (it != flight_info.end())
+			distance = it->second;
+		//distance = flight_info.at(destination);
+	}
+	else
+	{
+		auto it = flight_info.find(make_pair(destination, origin));
+		if (it != flight_info.end())
+			distance = it->second;
+	}
+	//else distance = flight_info[make_pair(destination, origin)];
 	pos = 0;
 	vel = 0;
 	wait_time = 0; 
@@ -54,22 +69,27 @@ void Plane::operate(double dt)
 	if (loiter_time != 0) {
 		loiter_time -= dt;
 		if (loiter_time < 0) loiter_time = 0;
+		return;
 	}	
 	else if (wait_time != 0)
 	{
 		wait_time -= dt;
 		if (wait_time < 0) wait_time = 0;
+		return;
 	}
 	else if (pos < distance)
 	{
 		pos += vel * dt;
 		at_SCE = 0;
+		return;
 	}
 	else if (destination == "SCE")
+	{
 		at_SCE = 1;
+	}
 
-	time_on_ground();
-	string temp = origin;
+	wait_time = time_on_ground();
+	string temp = destination;
 	destination = origin;
 	origin = temp;
 	pos = 0.0;

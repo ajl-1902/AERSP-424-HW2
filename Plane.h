@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <map>
+#include <vector>
 using namespace std;
 
 class Plane
@@ -13,6 +14,7 @@ private:
 	bool at_SCE;
 	string origin, destination;
 	map<pair<string, string>, int> flight_info;
+	//vector < tuple<string, string, int>> vec;
 
 public:
 	Plane(string from, string to);
@@ -30,7 +32,7 @@ public:
 	void setLoiterTime(double loiter_time);
 
 	double distance_to_SCE();
-	virtual double time_on_ground();
+	virtual double time_on_ground() = 0;
 	virtual string plane_type();
 	static double draw_from_normal_dist(double mean, double standard_deviation);
 };

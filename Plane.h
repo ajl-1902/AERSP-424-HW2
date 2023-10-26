@@ -13,9 +13,10 @@ private:
 	double pos, vel, distance, loiter_time;
 	bool at_SCE;
 	string origin, destination;
-	map<pair<string, string>, int> flight_info;
-	//map<string, int> flight_info;
-	//vector < tuple<string, string, int>> vec;
+	map<pair<string, string>, int> flight_info{
+	{ make_pair("SCE", "PHL"),160 },
+	{ make_pair("SCE", "ORD"),640 },
+	{ make_pair("SCE", "EWR"),220 } };
 
 public:
 	Plane(string from, string to);

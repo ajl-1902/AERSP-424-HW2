@@ -1,22 +1,10 @@
+#include <iostream>
 #include <string>
 #include <map>
 #include <random>
 #include <vector>
 #include "Plane.h"
 using namespace std;
-
-map<pair<string, string>, int> flight_info{
-	{ make_pair("SCE", "PHL"),160 },
-	{ make_pair("SCE", "ORD"),640 },
-	{ make_pair("SCE", "EWR"),220 } };
-
-//map<string, int> flight_info{
-//	{"PHL",160},{"ORD",640},{"EWR",220} };
-
-//vector<tuple<string, string, int>> vec{
-//	make_tuple("SCE", "PHL", 160),
-//	make_tuple("SCE", "ORD", 640),
-//	make_tuple("SCE", "EWR", 220) };
 
 double Plane::getPos() { return pos; }
 double Plane::getVel() { return vel; }
@@ -41,20 +29,9 @@ Plane::Plane(string from, string to)
 	destination = to;
 
 	if (origin == "SCE")
-	{
-		//distance = flight_info[make_pair(origin, destination)];
-		auto it = flight_info.find(make_pair(origin, destination));
-		if (it != flight_info.end())
-			distance = it->second;
-		//distance = flight_info.at(destination);
-	}
-	else
-	{
-		auto it = flight_info.find(make_pair(destination, origin));
-		if (it != flight_info.end())
-			distance = it->second;
-	}
-	//else distance = flight_info[make_pair(destination, origin)];
+		distance = this->flight_info[{origin, destination}];
+	else distance = this->flight_info[{destination, origin}];
+
 	pos = 0;
 	vel = 0;
 	wait_time = 0; 
@@ -102,7 +79,6 @@ double Plane::distance_to_SCE()
 	else return 0;
 }
 
-//double Plane::time_on_ground() { return 0; }
 string Plane::plane_type() { return "GA"; }
 
 double Plane::draw_from_normal_dist(double mean, double standard_deviation)

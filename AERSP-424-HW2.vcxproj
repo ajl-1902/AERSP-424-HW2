@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Airliner.cpp" />
+    <ClCompile Include="ATC.cpp" />
     <ClCompile Include="GeneralAviation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airliner.h" />
+    <ClInclude Include="ATC.h" />
     <ClInclude Include="GeneralAviation.h" />
     <ClInclude Include="Plane.h" />
   </ItemGroup>

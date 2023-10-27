@@ -7,9 +7,9 @@ using namespace std;
 ATC::ATC() {}
 ATC::~ATC() {}
 
-void ATC::register_plane(Plane* Aircraft)
+void ATC::register_plane(Plane& Aircraft)
 {
-	registered_planes.push_back(Aircraft);
+	registered_planes.push_back(&Aircraft);
 }
 
 void ATC::control_traffic()

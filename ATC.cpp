@@ -34,4 +34,5 @@ void ATC::control_traffic()
 			i++;
 		}
 	}
+	return;
 }

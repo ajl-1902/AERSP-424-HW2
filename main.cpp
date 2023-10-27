@@ -5,11 +5,15 @@
 #include "Airliner.h"
 #include "GeneralAviation.h"
 #include "ATC.h"
+#include "SDL.h"
+#include "HW2_Visualizer.h"
 using namespace std;
 
 
 int main(int argc, char** argv)
 {
+	HW2_VIZ viz;
+
 	Airliner AA5915("AA", "SCE", "PHL");
 	Airliner UA5236("UA", "SCE", "ORD");
 	Airliner UA4465("UA", "SCE", "EWR");
@@ -40,20 +44,34 @@ int main(int argc, char** argv)
 	{
 		AA5915.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(AA5915.plane_type(), AA5915.getOrigin(), AA5915.getDestination(), AA5915.getPos());
+
 		UA5236.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(UA5236.plane_type(), UA5236.getOrigin(), UA5236.getDestination(), UA5236.getPos());
+
 		UA4465.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(UA4465.plane_type(), UA4465.getOrigin(), UA4465.getDestination(), UA4465.getPos());
+
 		AA6240.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(AA6240.plane_type(), AA6240.getOrigin(), AA6240.getDestination(), AA6240.getPos());
+
 		GA1.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(GA1.plane_type(), GA1.getOrigin(), GA1.getDestination(), GA1.getPos());
+
 		GA2.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(GA2.plane_type(), GA2.getOrigin(), GA2.getDestination(), GA2.getPos());
+
 		GA3.operate(dt);
 		atc.control_traffic();
+		viz.visualize_plane(GA3.plane_type(), GA3.getOrigin(), GA3.getDestination(), GA3.getPos());
 
-		cout << AA5915.getPos() << "\t\t" << UA5236.getPos() << "\t\t" << UA4465.getPos() << "\t\t" << AA6240.getPos() << "\t\t"
-			<< GA1.getPos() << "\t\t" << GA2.getPos() << "\t\t" << GA3.getPos() << endl;
+		viz.update(dt);
+		//cout << AA5915.getPos() << "\t\t" << UA5236.getPos() << "\t\t" << UA4465.getPos() << "\t\t" << AA6240.getPos() << "\t\t"
+		//	<< GA1.getPos() << "\t\t" << GA2.getPos() << "\t\t" << GA3.getPos() << endl;
 	}
 }

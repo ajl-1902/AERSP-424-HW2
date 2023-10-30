@@ -31,13 +31,13 @@ int main(int argc, char** argv)
 	GA3.setVel(180.0/3600.0);
 
 	ATC atc;
-	atc.register_plane(AA5915);
-	atc.register_plane(UA5236);
-	atc.register_plane(UA4465);
-	atc.register_plane(AA6240);
-	atc.register_plane(GA1);
-	atc.register_plane(GA2);
-	atc.register_plane(GA3);
+	atc.register_plane(&AA5915);
+	atc.register_plane(&UA5236);
+	atc.register_plane(&UA4465);
+	atc.register_plane(&AA6240);
+	atc.register_plane(&GA1);
+	atc.register_plane(&GA2);
+	atc.register_plane(&GA3);
 
 	double dt = 10.0;
 	while (true)

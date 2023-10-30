@@ -16,6 +16,6 @@ public:
 	ATC();
 	~ATC();
 
-	void register_plane(Plane& Aircraft);
+	void register_plane(Plane* Aircraft);
 	void control_traffic();
 };

@@ -74,7 +74,9 @@ double Plane::distance_to_SCE()
 {
 	if (destination == "SCE")
 		return distance - pos;
-	else return 1000;
+	else return 1000; 
+	// Default return value of 0 was less than the established airspace distance
+	// Caused outbound planes to loiter whenever more than two planes were near SCE (regardless of where they actually were)
 }
 
 string Plane::plane_type() { return "GA"; }

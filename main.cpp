@@ -1,7 +1,5 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <map>
 #include "Airliner.h"
 #include "GeneralAviation.h"
 #include "ATC.h"

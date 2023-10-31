@@ -1,8 +1,6 @@
-#include <iostream>
 #include <string>
 #include <map>
 #include <random>
-#include <vector>
 #include "Plane.h"
 using namespace std;
 
@@ -76,7 +74,7 @@ double Plane::distance_to_SCE()
 {
 	if (destination == "SCE")
 		return distance - pos;
-	else return 0;
+	else return 1000;
 }
 
 string Plane::plane_type() { return "GA"; }

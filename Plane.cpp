@@ -26,6 +26,8 @@ Plane::Plane(string from, string to)
 	origin = from;
 	destination = to;
 
+	// Distance can only be accessed from flight_info map if keys are in a specific order (SCE first)
+	// Strings must be swapped to put "SCE" first if it is not the current origin
 	if (origin == "SCE")
 		distance = this->flight_info[{origin, destination}];
 	else distance = this->flight_info[{destination, origin}];
@@ -44,7 +46,9 @@ void Plane::operate(double dt)
 	if (loiter_time != 0) {
 		loiter_time -= dt;
 		if (loiter_time < 0) loiter_time = 0;
-		return;
+		return; 
+		// Must explicitly exit function at the end of each if
+		// Position outside if chain should only be reset to zero if no conditions met (other than final one)
 	}	
 	else if (wait_time != 0)
 	{
@@ -64,7 +68,7 @@ void Plane::operate(double dt)
 	}
 
 	wait_time = time_on_ground();
-	string temp = destination;
+	string temp = destination; // Temp variable created to swap origin and destination
 	destination = origin;
 	origin = temp;
 	pos = 0.0;
@@ -76,7 +80,7 @@ double Plane::distance_to_SCE()
 		return distance - pos;
 	else return 1000; 
 	// Default return value of 0 was less than the established airspace distance
-	// Caused outbound planes to loiter whenever more than two planes were near SCE (regardless of where they actually were)
+	// Caused outbound planes to loiter whenever more than two planes were near SCE (regardless of their actual position)
 }
 
 string Plane::plane_type() { return "GA"; }

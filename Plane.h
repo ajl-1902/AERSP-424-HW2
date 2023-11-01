@@ -15,7 +15,7 @@ private:
 	map<pair<string, string>, int> flight_info{
 	{ make_pair("SCE", "PHL"),160 },
 	{ make_pair("SCE", "ORD"),640 },
-	{ make_pair("SCE", "EWR"),220 } };
+	{ make_pair("SCE", "EWR"),220 } }; // Pair of destination/origin airports used to access distance between them
 
 public:
 	Plane(string from, string to);
@@ -33,7 +33,7 @@ public:
 	void setLoiterTime(double loiter_time);
 
 	double distance_to_SCE();
-	virtual double time_on_ground() = 0;
+	virtual double time_on_ground() = 0; // Purely virtual - not used in the base class, and is overwritten by derived classes
 	virtual string plane_type();
 	static double draw_from_normal_dist(double mean, double standard_deviation);
 };

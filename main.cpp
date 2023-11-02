@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 		viz.update(dt);
 
 		// Output for Q5/Q7
-		//cout << AA5915.getPos() << "\t\t" << UA5236.getPos() << "\t\t" << UA4465.getPos() << "\t\t" << AA6240.getPos() << "\t\t"
-		//	<< GA1.getPos() << "\t\t" << GA2.getPos() << "\t\t" << GA3.getPos() << endl;
+		// cout << AA5915.getPos() << "\t\t" << UA5236.getPos() << "\t\t" << UA4465.getPos() << "\t\t" << AA6240.getPos() << "\t\t"
+		//	 << GA1.getPos() << "\t\t" << GA2.getPos() << "\t\t" << GA3.getPos() << endl;
 	}
 }
